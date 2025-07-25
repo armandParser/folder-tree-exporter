@@ -6,6 +6,9 @@ on:
       - 'v*'
   workflow_dispatch:  # Allow manual trigger
 
+permissions:
+  contents: write  # Required for creating releases
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -56,15 +59,20 @@ jobs:
       with:
         path: artifacts
     
+    - name: Organize files for release
+      run: |
+        mkdir -p release-files
+        cp artifacts/tree-export-linux/tree-export release-files/tree-export-linux
+        cp artifacts/tree-export-macos/tree-export release-files/tree-export-macos  
+        cp artifacts/tree-export-windows.exe/tree-export.exe release-files/tree-export-windows.exe
+        ls -la release-files/
+    
     - name: Create Release
       uses: softprops/action-gh-release@v2
       with:
-        files: |
-          artifacts/tree-export-linux/tree-export
-          artifacts/tree-export-macos/tree-export
-          artifacts/tree-export-windows/tree-export-windows.exe
+        files: release-files/*
         draft: false
         prerelease: false
         generate_release_notes: true
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}
