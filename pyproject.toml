@@ -1,7 +1,7 @@
 [project]
 name = "folder-tree-exporter"
-version = "0.1.0"
-description = "Add your description here"
+version = "0.2.0"
+description = "Export directory structure as ASCII tree to clipboard or file"
 dependencies = [
     "pyperclip>=1.9.0",
 ]
@@ -19,6 +19,7 @@ build-backend = "hatchling.build"
 managed = true
 dev-dependencies = [
     "pyinstaller>=6.14.2",
+    "psutil>=7.0.0",
 ]
 
 [tool.hatch.metadata]
