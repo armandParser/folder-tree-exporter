@@ -4,14 +4,34 @@ A Python command-line tool to export directory structures as ASCII trees to clip
 
 ## Installation
 
-```bash
-# Clone/create project
-rye init folder-tree-exporter
-cd folder-tree-exporter
+# macOS/Linux
 
-# Install dependencies
-rye sync
-```
+curl -L https://github.com/armandParser/folder-tree-exporter/releases/latest/download/tree-export-macos -o tree-export
+chmod +x tree-export
+sudo mv tree-export /usr/local/bin/
+
+# Windows 
+
+- Option 1: Powershell
+
+Invoke-WebRequest -Uri "https://github.com/armandParser/folder-tree-exporter/releases/latest/download/tree-export-windows.exe" -OutFile "tree-export.exe"
+
+- Option 2: Command Prompt
+
+Download using curl (available in Windows 10+)
+curl -L https://github.com/armandParser/folder-tree-exporter/releases/latest/download/tree-export-windows.exe -o tree-export.exe
+
+Optional: Move to PATH directory (requires admin)
+move tree-export.exe C:\Windows\System32\
+
+- Option 3: Manual
+
+Download: https://github.com/armandParser/folder-tree-exporter/releases/latest/download/tree-export-windows.exe
+Rename to tree-export.exe
+
+Either:
+Run from current directory: .\tree-export.exe C:\path\to\folder
+Add to PATH for system-wide access
 
 ## Usage
 
@@ -52,27 +72,3 @@ my-project/
 - `-d, --depth`: Maximum depth to traverse
 - `-a, --all`: Include hidden files and directories
 - `-p, --print`: Print to stdout instead of clipboard
-
-## Development
-
-```bash
-# Install in development mode
-rye sync
-
-# Run directly
-rye run tree-export /path/to/folder
-```# folder-tree-exporter
-
-Describe your project here.
-
-
-
-
-
-
-# Download and make executable
-curl -L https://github.com/yourusername/tree-export/releases/latest/download/tree-export-macos -o tree-export
-chmod +x tree-export
-
-# Optional: Install system-wide
-sudo mv tree-export /usr/local/bin/
