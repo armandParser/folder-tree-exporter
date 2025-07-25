@@ -64,3 +64,15 @@ rye run tree-export /path/to/folder
 ```# folder-tree-exporter
 
 Describe your project here.
+
+
+
+
+
+
+# Download and make executable
+curl -L https://github.com/yourusername/tree-export/releases/latest/download/tree-export-macos -o tree-export
+chmod +x tree-export
+
+# Optional: Install system-wide
+sudo mv tree-export /usr/local/bin/
